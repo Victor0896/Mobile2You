@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0F91C0E3278CD55000814551 /* TodoMoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0E2278CD55000814551 /* TodoMoviesApp.swift */; };
-		0F91C0E5278CD55000814551 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0E4278CD55000814551 /* ContentView.swift */; };
 		0F91C0E7278CD55200814551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F91C0E6278CD55200814551 /* Assets.xcassets */; };
 		0F91C0EA278CD55200814551 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F91C0E9278CD55200814551 /* Preview Assets.xcassets */; };
 		0F91C0F4278CD55200814551 /* TodoMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0F3278CD55200814551 /* TodoMoviesTests.swift */; };
 		0F91C0FE278CD55200814551 /* TodoMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0FD278CD55200814551 /* TodoMoviesUITests.swift */; };
 		0F91C100278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0FF278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift */; };
+		0F91C112278CE57300814551 /* movieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C111278CE57300814551 /* movieCell.swift */; };
+		0F91C114278CE70300814551 /* moviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C113278CE70300814551 /* moviesScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		0F91C0DF278CD55000814551 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F91C0E2278CD55000814551 /* TodoMoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesApp.swift; sourceTree = "<group>"; };
-		0F91C0E4278CD55000814551 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F91C0E6278CD55200814551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F91C0E9278CD55200814551 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F91C0EF278CD55200814551 /* TodoMoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +44,8 @@
 		0F91C0F9278CD55200814551 /* TodoMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F91C0FD278CD55200814551 /* TodoMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITests.swift; sourceTree = "<group>"; };
 		0F91C0FF278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0F91C111278CE57300814551 /* movieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieCell.swift; sourceTree = "<group>"; };
+		0F91C113278CE70300814551 /* moviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviesScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +142,8 @@
 		0F91C10D278CD57200814551 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0F91C0E4278CD55000814551 /* ContentView.swift */,
+				0F91C113278CE70300814551 /* moviesScreen.swift */,
+				0F91C111278CE57300814551 /* movieCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,8 +292,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F91C0E5278CD55000814551 /* ContentView.swift in Sources */,
+				0F91C112278CE57300814551 /* movieCell.swift in Sources */,
 				0F91C0E3278CD55000814551 /* TodoMoviesApp.swift in Sources */,
+				0F91C114278CE70300814551 /* moviesScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
