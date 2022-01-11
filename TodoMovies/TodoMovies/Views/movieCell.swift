@@ -13,7 +13,7 @@ struct movieCell: View {
             HStack {
                 HStack {
                     movieImage
-                        .frame(width: view.size.width*0.2, height: view.size.height * 0.15, alignment: .center)
+                        .frame(width: view.size.width * 0.2, height: view.size.height * 0.15, alignment: .center)
                     textMovieDescription()
                 }
                 Spacer()
