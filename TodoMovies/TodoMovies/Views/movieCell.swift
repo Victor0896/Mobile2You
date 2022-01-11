@@ -9,7 +9,20 @@ import SwiftUI
 
 struct movieCell: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            HStack {
+                Image(systemName: "camera")
+                VStack {
+                    Text("Edward Scissorhands")
+                    HStack {
+                        Text("1992")
+                        Text("Drama, comedy")
+                    }
+                }
+            }
+            Spacer()
+            Image(systemName: "checkmark.circle.fill")
+        }
     }
 }
 
