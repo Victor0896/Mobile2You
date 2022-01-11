@@ -26,18 +26,14 @@ struct moviesScreen: View {
                 }
                 .padding()
                 VStack {
-                    Text("hello")
-                    Text("hello")
-                    Text("hello")
-                    Text("hello")
-                    Text("hello")
-                    Text("hello")
-                    Text("hello")
-                    
+                    ForEach(0..<10) { item in
+                        movieCell()
+                    }
+                    .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
             }
             .background(Color("primaryBlack"))
-        .foregroundColor(Color("primaryWhite"))
+            .foregroundColor(Color("primaryWhite"))
         }
     }
 }
@@ -45,7 +41,6 @@ struct moviesScreen: View {
 struct imageMoviesList: View {
     var body: some View {
         Image(systemName: "camera")
-            .frame(width: 200, height: 200, alignment: .center)
     }
 }
 

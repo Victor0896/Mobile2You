@@ -13,13 +13,15 @@ struct movieCell: View {
             HStack {
                 HStack {
                     movieImage
-                        .frame(width: view.size.width * 0.2, height: view.size.height * 0.15, alignment: .center)
+                        .frame(width: view.size.width * 0.2, height: view.size.height, alignment: .center)
+                        .background(.white)                                                                 //test color
+                        .padding(5)
                     textMovieDescription()
                 }
                 Spacer()
                 checkmarkCellButtom()
             }
-            .frame(width: view.size.width, height: view.size.height * 0.15, alignment: .center)
+            .frame(width: view.size.width, height: view.size.height, alignment: .center)
             .foregroundColor(Color("primaryWhite"))
             .background(Color("primaryBlack"))
         }
@@ -28,6 +30,7 @@ struct movieCell: View {
 
 var movieImage: some View {
     Image(systemName: "camera")
+        .foregroundColor(Color("primaryBlack"))                                                             //test color
 }
 
 struct textMovieDescription: View {
@@ -35,7 +38,7 @@ struct textMovieDescription: View {
         VStack {
             HStack {
                 Text("Edward Scissorhands")
-                    .font(.system(size: 24, weight: .regular, design: .default))
+                    .font(.system(size: 18, weight: .regular, design: .default))
                 Spacer()
             }
             HStack {
@@ -43,7 +46,7 @@ struct textMovieDescription: View {
                 Text("Drama, comedy")
                 Spacer()
             }
-            .font(.system(size: 16, weight: .regular, design: .default))
+            .font(.system(size: 14, weight: .regular, design: .default))
         }
     }
 }
@@ -52,6 +55,7 @@ struct checkmarkCellButtom: View {
     var body: some View {
         VStack {
             Image(systemName: "checkmark.circle.fill")
+                .padding()
             Spacer()
         }
     }
