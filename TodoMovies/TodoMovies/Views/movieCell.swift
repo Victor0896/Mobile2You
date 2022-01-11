@@ -22,7 +22,7 @@ struct movieCell: View {
                 checkmarkCellButtom()
             }
             .frame(width: view.size.width, height: view.size.height, alignment: .center)
-            .foregroundColor(Color("primaryWhite"))
+            .foregroundColor(Color("primaryGrey"))
             .background(Color("primaryBlack"))
         }
     }
