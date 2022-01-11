@@ -70,8 +70,13 @@ struct textMovieListData: View {
 }
 
 struct checkmarkLikeMoviesList: View {
+    @State var didLiked = false                                  //implement search to see if is added?
+    
     var body: some View {
-        Image(systemName: "heart")
+        chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLiked)
+            .onTapGesture {
+                self.didLiked = changeState(state: didLiked)
+            }
     }
 }
 
@@ -86,25 +91,23 @@ struct textSubimittedBy: View {
 }
 
 struct buttonMoviesList: View {
-    @State private var didTap: Bool = false
+    @State private var didTap = false
     
     var textsButton: Array<String>
     var mainColor: Color
     var haveImageBeforeText: Bool
     var body: some View {
         Button(action: {
-            if didTap { didTap = false }
-            else { didTap = true }
-            //!haveImageBeforeText
+            self.didTap = changeState(state: didTap)
+            
         }) {
             HStack {
-                haveImageBeforeText ? Image(systemName:didTap ? "suit.heart.fill": "heart") : nil
+                haveImageBeforeText ? chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didTap) : nil
                 Text(didTap ? textsButton[1]: textsButton[0])
             }
             .padding()
             .frame(maxWidth: .infinity)
         }
-        
         .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(mainColor, lineWidth: 2))
         .background(didTap ? mainColor : Color("primaryBlack"))
@@ -114,10 +117,17 @@ struct buttonMoviesList: View {
     }
 }
 
+func changeState(state: Bool) -> Bool {
+    if state {
+        return false
+    } else {
+        return true
+    }
+}
 
-
-
-
+func chageBetweenSymbols(firstSymbol: String, secondSymbol: String, state: Bool) -> Image {
+    return Image(systemName: state ? firstSymbol: secondSymbol)
+}
 
 
 

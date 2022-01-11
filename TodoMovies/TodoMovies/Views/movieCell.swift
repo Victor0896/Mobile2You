@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct movieCell: View {
+    //@State public var isAddingToMyList = false
+    
     var body: some View {
         GeometryReader { view in
             HStack {
@@ -54,16 +56,12 @@ struct textMovieDescription: View {
 struct checkmarkCellButtom: View {
     var body: some View {
         VStack {
-            Image(systemName: "checkmark.circle.fill")
+            Image(systemName: "plus.circle.fill")
                 .padding()
             Spacer()
         }
     }
 }
-
-
-
-
 
 
 
