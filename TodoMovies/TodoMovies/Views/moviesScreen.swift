@@ -27,7 +27,7 @@ struct moviesScreen: View {
                 .padding()
                 VStack {
                     ForEach(0..<10) { item in
-                        //movieCell()
+                        movieCell()
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
@@ -75,30 +75,6 @@ struct checkmarkLikeMoviesList: View {
     }
 }
 
-var buttonLikeMoviesList: some View {
-    Button(action: {}, label: {
-        Text("Liked")
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color("primaryGrey"))
-            .cornerRadius(10)
-            .foregroundColor(Color("primaryBlack"))
-    })
-        .padding(.top)
-}
-
-var buttonAddToMyList: some View {
-    Button(action: {}, label: {
-        Text("Add to My lists")
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color("primaryGrey"))
-            .cornerRadius(10)
-            .foregroundColor(Color("primaryBlack"))
-    })
-        .padding(.top)
-}
-
 struct textSubimittedBy: View {
     var body: some View {
         HStack {
@@ -137,6 +113,7 @@ struct buttonMoviesList: View {
         .padding(.top)
     }
 }
+
 
 
 
