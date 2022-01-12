@@ -29,7 +29,7 @@ struct moviesScreen: View {
                 .padding()
                 VStack {
                     ForEach(moviesListViewModel.moviesListData.movies) { movie in
-                        movieCell()
+                        movieCell(movie: movie)
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }

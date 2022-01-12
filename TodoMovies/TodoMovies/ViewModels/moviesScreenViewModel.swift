@@ -16,9 +16,15 @@ class moviesScreenViewModel: ObservableObject {
                    numberOfViews: "3 of 10",
                    listAuthor: "@TodoMoviesApp",
                    image: "camera",
-                   movies: [movie(id: 1, movieName: "test"), movie(id: 2,movieName: "test")]
-        )
-    }
+                   movies: [movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
+                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
+                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
+                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")])]
+    )}
     
     @Published private(set) var moviesListData: moviesList = getMoviesList()
     

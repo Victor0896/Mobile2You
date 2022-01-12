@@ -10,7 +10,12 @@ import Foundation
 struct movie: Identifiable {
     var id: Int
     var movieName: String
-    //var movieDate: Int
-    //var movieGenres: Array<String>
-    //var movieImage: String
+    var movieDate: Int
+    var movieImagePreview: String
+    var movieGenres: Array<genres>
+    
+    struct genres: Identifiable {
+        var id: Int
+        var genre: String
+    }
 }
