@@ -15,6 +15,9 @@
 		0F91C100278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0FF278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift */; };
 		0F91C112278CE57300814551 /* movieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C111278CE57300814551 /* movieCell.swift */; };
 		0F91C114278CE70300814551 /* moviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C113278CE70300814551 /* moviesScreen.swift */; };
+		0F91C116278E8DC500814551 /* moviesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C115278E8DC500814551 /* moviesScreenViewModel.swift */; };
+		0F91C118278E8E8D00814551 /* moviesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C117278E8E8D00814551 /* moviesList.swift */; };
+		0F91C11A278E902400814551 /* movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C119278E902400814551 /* movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		0F91C0FF278CD55200814551 /* TodoMoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0F91C111278CE57300814551 /* movieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieCell.swift; sourceTree = "<group>"; };
 		0F91C113278CE70300814551 /* moviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviesScreen.swift; sourceTree = "<group>"; };
+		0F91C115278E8DC500814551 /* moviesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviesScreenViewModel.swift; sourceTree = "<group>"; };
+		0F91C117278E8E8D00814551 /* moviesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviesList.swift; sourceTree = "<group>"; };
+		0F91C119278E902400814551 /* movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				0F91C0E2278CD55000814551 /* TodoMoviesApp.swift */,
-				0F91C10F278CD58B00814551 /* Models */,
-				0F91C10E278CD57E00814551 /* ViewModels */,
 				0F91C10D278CD57200814551 /* Views */,
+				0F91C10E278CD57E00814551 /* ViewModels */,
+				0F91C10F278CD58B00814551 /* Models */,
 				0F91C0E6278CD55200814551 /* Assets.xcassets */,
 				0F91C0E8278CD55200814551 /* Preview Content */,
 			);
@@ -151,6 +157,7 @@
 		0F91C10E278CD57E00814551 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0F91C115278E8DC500814551 /* moviesScreenViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 		0F91C10F278CD58B00814551 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0F91C117278E8E8D00814551 /* moviesList.swift */,
+				0F91C119278E902400814551 /* movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,9 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F91C11A278E902400814551 /* movie.swift in Sources */,
 				0F91C112278CE57300814551 /* movieCell.swift in Sources */,
+				0F91C116278E8DC500814551 /* moviesScreenViewModel.swift in Sources */,
 				0F91C0E3278CD55000814551 /* TodoMoviesApp.swift in Sources */,
 				0F91C114278CE70300814551 /* moviesScreen.swift in Sources */,
+				0F91C118278E8E8D00814551 /* moviesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

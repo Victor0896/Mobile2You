@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct moviesScreen: View {
+    @ObservedObject var moviesListViewModel: moviesScreenViewModel
+    
     var body: some View {
         GeometryReader { view in
             ScrollView() {
@@ -15,7 +17,7 @@ struct moviesScreen: View {
                     .frame(width: view.size.width, height: view.size.height * 0.45, alignment: .center)
                 HStack {
                     VStack {
-                        textNameMoviesList()
+                        textNameMoviesList(listName: moviesListViewModel.moviesListData.listName)
                         textMovieListData()
                     }
                     Spacer()
@@ -48,9 +50,10 @@ struct imageMoviesList: View {
 }
 
 struct textNameMoviesList: View {
+    var listName: String
     var body: some View {
         HStack {
-            Text("The very best of Jhonny Depp")
+            Text(listName)
                 .font(.system(size: 28, weight: .bold, design: .default))
             Spacer()
         }
@@ -58,11 +61,15 @@ struct textNameMoviesList: View {
 }
 
 struct textMovieListData: View {
+    @State var didLiked = false
+    var numberOfListLikes = "1.2k "
+    var numberOfWhatchedListMovies = "3 of 10 "
+    
     var body: some View {
         HStack {
-            Image(systemName: "heart")
-            Text("1.2 Likes     ")
-            Text("3 of 10 watched")
+            chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLiked)
+            Text(numberOfListLikes) + Text("Likes") + Text("   ")
+            Text(numberOfWhatchedListMovies) + Text("watched")
             Spacer()
         }
         .padding(.vertical,1)
@@ -83,8 +90,7 @@ struct checkmarkLikeMoviesList: View {
 struct textSubimittedBy: View {
     var body: some View {
         HStack {
-            Text("List subimitted by ")
-            + Text("@TodoMoviesApp")
+            Text("List subimitted by ") + Text("@TodoMoviesApp")
         }
         .padding(40)
     }
@@ -133,6 +139,7 @@ func chageBetweenSymbols(firstSymbol: String, secondSymbol: String, state: Bool)
 
 struct moviesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        moviesScreen()
+        let screen = moviesScreenViewModel()
+        moviesScreen(moviesListViewModel: screen)
     }
 }
