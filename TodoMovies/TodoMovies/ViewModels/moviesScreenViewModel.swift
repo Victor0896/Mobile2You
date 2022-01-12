@@ -16,13 +16,13 @@ class moviesScreenViewModel: ObservableObject {
                    numberOfViews: "3 of 10",
                    listAuthor: "@TodoMoviesApp",
                    image: "camera",
-                   movies: [movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                   movies: [movie(id: 1, movieName: "Edward Scissorhands", movieDate: 1990, movieImagePreview: "camera", movieGenres:
                                     [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
-                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
-                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
-                            movie(id: 1, movieName: "test", movieDate: 1992, movieImagePreview: "camera", movieGenres:
+                            movie(id: 2, movieName: "Ed Wood", movieDate: 1994, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 3, genre: "Comedy"), movie.genres(id: 2, genre: "Action")]),
+                            movie(id: 3, movieName: "A Nightmare on Elm Street", movieDate: 1984, movieImagePreview: "camera", movieGenres:
+                                    [movie.genres(id: 4, genre: "Horror")]),
+                            movie(id: 4, movieName: "Pirates of the Caribbean", movieDate: 2000, movieImagePreview: "camera", movieGenres:
                                     [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")])]
     )}
     
