@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct movieCell: View {
-    //@State public var isAddingToMyList = false
-    
     var body: some View {
         GeometryReader { view in
             HStack {

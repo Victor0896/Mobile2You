@@ -10,14 +10,12 @@ import Foundation
 struct moviesList: Identifiable {
     var id: Int
     var listName: String
-    var numberOfLikes: Int
+    var numberOfLikes: String
     var numberOfViews: String
-    var postAuthor: String
+    var listAuthor: String
     var image: String
     
     private(set) var movies: Array<movie>
-    
-
 }
 
 

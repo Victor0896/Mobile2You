@@ -12,11 +12,11 @@ class moviesScreenViewModel: ObservableObject {
     static func getMoviesList() -> moviesList {
         moviesList(id: 2,
                    listName: "The very best of Jhonny Depp",
-                   numberOfLikes: 100,
-                   numberOfViews: "3 of 10 Watched",
-                   postAuthor: "@TodoMoviesApp",
-                   image: "image",
-                   movies: [movie(movieName: "test"), movie(movieName: "test")]
+                   numberOfLikes: "1.2k",
+                   numberOfViews: "3 of 10",
+                   listAuthor: "@TodoMoviesApp",
+                   image: "camera",
+                   movies: [movie(id: 1, movieName: "test"), movie(id: 2,movieName: "test")]
         )
     }
     

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct movie {
+struct movie: Identifiable {
+    var id: Int
     var movieName: String
     //var movieDate: Int
     //var movieGenres: Array<String>

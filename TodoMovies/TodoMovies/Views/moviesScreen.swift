@@ -13,12 +13,12 @@ struct moviesScreen: View {
     var body: some View {
         GeometryReader { view in
             ScrollView() {
-                imageMoviesList()
+                imageMoviesList(image: moviesListViewModel.moviesListData.image)
                     .frame(width: view.size.width, height: view.size.height * 0.45, alignment: .center)
                 HStack {
                     VStack {
                         textNameMoviesList(listName: moviesListViewModel.moviesListData.listName)
-                        textMovieListData()
+                        textMovieListData(numberOfListLikes: moviesListViewModel.moviesListData.numberOfLikes, numberOfWhatchedListMovies: moviesListViewModel.moviesListData.numberOfViews)
                     }
                     Spacer()
                     VStack {
@@ -28,14 +28,14 @@ struct moviesScreen: View {
                 }
                 .padding()
                 VStack {
-                    ForEach(0..<10) { item in
+                    ForEach(moviesListViewModel.moviesListData.movies) { movie in
                         movieCell()
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
                 buttonMoviesList(textsButton: ["Like", "Liked"], mainColor: Color("primaryGrey"), haveImageBeforeText: true)
                 buttonMoviesList(textsButton: ["Add to My Lists", "Added to My Lists"], mainColor: Color("primaryGrey"), haveImageBeforeText: false)
-                textSubimittedBy()
+                textSubimittedBy(senderName: moviesListViewModel.moviesListData.listAuthor)
             }
             .background(Color("primaryBlack"))
             .foregroundColor(Color("primaryGrey"))
@@ -44,8 +44,9 @@ struct moviesScreen: View {
 }
 
 struct imageMoviesList: View {
+    var image: String
     var body: some View {
-        Image(systemName: "camera")
+        Image(systemName: image)
     }
 }
 
@@ -62,14 +63,14 @@ struct textNameMoviesList: View {
 
 struct textMovieListData: View {
     @State var didLiked = false
-    var numberOfListLikes = "1.2k "
-    var numberOfWhatchedListMovies = "3 of 10 "
+    var numberOfListLikes: String
+    var numberOfWhatchedListMovies: String
     
     var body: some View {
         HStack {
             chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLiked)
             Text(numberOfListLikes) + Text("Likes") + Text("   ")
-            Text(numberOfWhatchedListMovies) + Text("watched")
+            Text(numberOfWhatchedListMovies) + Text(" watched")
             Spacer()
         }
         .padding(.vertical,1)
@@ -88,9 +89,10 @@ struct checkmarkLikeMoviesList: View {
 }
 
 struct textSubimittedBy: View {
+    var senderName: String
     var body: some View {
         HStack {
-            Text("List subimitted by ") + Text("@TodoMoviesApp")
+            Text("List subimitted by ") + Text(senderName)
         }
         .padding(40)
     }
