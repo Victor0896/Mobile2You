@@ -9,6 +9,7 @@ import SwiftUI
 
 struct moviesScreen: View {
     @ObservedObject var moviesListViewModel: moviesScreenViewModel
+    @State public var didLikedList = false
     
     var body: some View {
         GeometryReader { view in
@@ -18,11 +19,11 @@ struct moviesScreen: View {
                 HStack {
                     VStack {
                         textNameMoviesList(listName: moviesListViewModel.moviesListData.listName)
-                        textMovieListData(numberOfListLikes: moviesListViewModel.moviesListData.numberOfLikes, numberOfWhatchedListMovies: moviesListViewModel.moviesListData.numberOfViews)
+                        textMovieListData(didLikedList: $didLikedList, moviesList: moviesListViewModel.moviesListData)
                     }
                     Spacer()
                     VStack {
-                        checkmarkLikeMoviesList()
+                        checkmarkLikeMoviesList(didLikedList: $didLikedList)
                         Spacer()
                     }
                 }
@@ -33,12 +34,21 @@ struct moviesScreen: View {
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
-                buttonMoviesList(textsButton: ["Like", "Liked"], mainColor: Color("primaryGrey"), haveImageBeforeText: true)
-                buttonMoviesList(textsButton: ["Add to My Lists", "Added to My Lists"], mainColor: Color("primaryGrey"), haveImageBeforeText: false)
+                buttonMoviesList(textsButton: ["Like", "Liked"],
+                                 mainColor: Color("primaryGrey"),
+                                 haveImageBeforeText: true,
+                                 didLikedList: $didLikedList)
+                buttonMoviesList(textsButton: ["Add to My Lists", "Added to My Lists"],
+                                 mainColor: Color("primaryGrey"),
+                                 haveImageBeforeText: false,
+                                 didLikedList: $didLikedList)
                 textSubimittedBy(senderName: moviesListViewModel.moviesListData.listAuthor)
             }
             .background(Color("primaryBlack"))
             .foregroundColor(Color("primaryGrey"))
+            .onAppear() {
+                //getUserList
+            }
         }
     }
 }
@@ -62,15 +72,14 @@ struct textNameMoviesList: View {
 }
 
 struct textMovieListData: View {
-    @State var didLiked = false
-    var numberOfListLikes: String
-    var numberOfWhatchedListMovies: String
+    @Binding var didLikedList: Bool
+    var moviesList: moviesList
     
     var body: some View {
         HStack {
-            chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLiked)
-            Text(numberOfListLikes) + Text("Likes") + Text("   ")
-            Text(numberOfWhatchedListMovies) + Text(" watched")
+            chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLikedList)
+            Text(moviesList.numberOfLikes) + Text("Likes") + Text("   ")
+            Text(moviesList.numberOfViews) + Text(" watched")
             Spacer()
         }
         .padding(.vertical,1)
@@ -78,12 +87,12 @@ struct textMovieListData: View {
 }
 
 struct checkmarkLikeMoviesList: View {
-    @State var didLiked = false                                  //implement search to see if is added?
+    @Binding var didLikedList: Bool                                 //implement search to see if is added?
     
     var body: some View {
-        chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLiked)
+        chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLikedList)
             .onTapGesture {
-                self.didLiked = changeState(state: didLiked)
+                didLikedList.toggle()
             }
     }
 }
@@ -104,10 +113,13 @@ struct buttonMoviesList: View {
     var textsButton: Array<String>
     var mainColor: Color
     var haveImageBeforeText: Bool
+    
+    @Binding var didLikedList: Bool
+    
     var body: some View {
         Button(action: {
-            self.didTap = changeState(state: didTap)
-            
+            self.didTap.toggle()
+            haveImageBeforeText ? didLikedList.toggle() : nil
         }) {
             HStack {
                 haveImageBeforeText ? chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didTap) : nil
@@ -125,19 +137,9 @@ struct buttonMoviesList: View {
     }
 }
 
-func changeState(state: Bool) -> Bool {
-    if state {
-        return false
-    } else {
-        return true
-    }
-}
-
 func chageBetweenSymbols(firstSymbol: String, secondSymbol: String, state: Bool) -> Image {
     return Image(systemName: state ? firstSymbol: secondSymbol)
 }
-
-
 
 struct moviesScreen_Previews: PreviewProvider {
     static var previews: some View {
