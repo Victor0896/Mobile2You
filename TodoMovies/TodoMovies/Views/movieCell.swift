@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct movieCell: View {
+    @ObservedObject var moviesListViewModel: moviesScreenViewModel
     let movie: movie
     
     var body: some View {
         GeometryReader { view in
             HStack {
                 HStack {
-                    movieImage(image: movie.movieImagePreview)
+                    movieImage(image: moviesListViewModel.imageBuilder(imageString: movie.movieImagePreview))
                         .frame(width: view.size.width * 0.2, height: view.size.height, alignment: .center)
                         .background(.white)                                                                 //test color
                         .padding(5)
@@ -36,8 +37,12 @@ struct movieCell: View {
 struct movieImage: View {
     var image: String
     var body: some View {
-        Image(systemName: "camera")
-            .foregroundColor(Color("primaryBlack"))
+        AsyncImage(url: URL(string: self.image)) { image in
+            image.resizable()
+        } placeholder: {
+            Image(systemName: "camera")
+                .foregroundColor(Color("primaryBlack"))
+        }
     }
 }
 

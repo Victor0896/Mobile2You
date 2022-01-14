@@ -12,8 +12,10 @@ class moviesScreenViewModel: ObservableObject {
     @Published private(set) var moviesListData: moviesList = getMoviesList()
     @Published private(set) var movies: pageResults = getMovie()
     
-    private let movieListUrl = "https://api.themoviedb.org/3/movie/2?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
-    private let simlarMoviesUrl = "https://api.themoviedb.org/3/movie/2/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
+    
+    private let movieId = 6
+    private let movieListUrl = "https://api.themoviedb.org/3/movie/6?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
+    private let simlarMoviesUrl = "https://api.themoviedb.org/3/movie/6/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
     
     static func getMoviesList() -> moviesList {                                             //testMovieList
         moviesList(id: 2,
@@ -41,6 +43,30 @@ class moviesScreenViewModel: ObservableObject {
                                              movieGenres: [1,2,3])])
     }
     
+    
+    //MARK: Data
+    
+    
+    func dateDisplay(releaseDate: String) -> String {
+        let dateArray = releaseDate.components(separatedBy: "-")
+        if !dateArray.isEmpty {
+            return dateArray[2]
+        } else { return ""}
+    }
+    
+    func imageBuilder(imageString: String) -> String {
+        let baseUrl = "https://image.tmdb.org/t/p/"
+        let size = "w780"
+        return baseUrl + size + imageString
+    }
+    
+    
+    //MARK: user intent
+    
+    
+    
+    
+    //MARK: API CALLS
     
     func getListOfSimilarMovies() {
         guard let url = URL(string: simlarMoviesUrl) else { return }

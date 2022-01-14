@@ -15,7 +15,7 @@ struct moviesScreen: View {
     var body: some View {
         GeometryReader { view in
             ScrollView() {
-                imageMoviesList(image: moviesListViewModel.moviesListData.image)
+                imageMoviesList(image: moviesListViewModel.imageBuilder(imageString: moviesListViewModel.moviesListData.image))
                     .frame(width: view.size.width, height: view.size.height * 0.45, alignment: .center)
                 HStack {
                     VStack {
@@ -31,7 +31,7 @@ struct moviesScreen: View {
                 .padding()
                 VStack {
                     ForEach(moviesListViewModel.movies.results) { movie in
-                        movieCell(movie: movie)
+                        movieCell(moviesListViewModel: moviesListViewModel, movie: movie)
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
@@ -59,7 +59,11 @@ struct moviesScreen: View {
 struct imageMoviesList: View {
     var image: String
     var body: some View {
-        Image(systemName: image)
+        AsyncImage(url: URL(string: self.image)) { image in
+            image.resizable()
+        } placeholder: {
+            Image(systemName: "camera")
+        }
     }
 }
 
