@@ -50,7 +50,8 @@ class moviesScreenViewModel: ObservableObject {
     func dateDisplay(releaseDate: String) -> String {
         let dateArray = releaseDate.components(separatedBy: "-")
         if !dateArray.isEmpty {
-            return dateArray[2]
+
+            return dateArray[0]
         } else { return ""}
     }
     
@@ -59,6 +60,13 @@ class moviesScreenViewModel: ObservableObject {
         let size = "w780"
         return baseUrl + size + imageString
     }
+    
+    /*func listGenres(genresList: [Int]) -> String {
+        var stringGenres: [String]
+        genresList.forEach { genre in
+            stringGenres[genre] = genresEnum.genreid(genresList[genre])
+        }
+    }*/
     
     
     //MARK: user intent

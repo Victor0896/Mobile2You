@@ -21,7 +21,7 @@ struct movieCell: View {
                         .padding(5)
                     VStack {
                         textMovieName(movieName: movie.movieName)
-                        textMovieDescription(movieDate: movie.movieDate, movieGenres: movie.movieGenres)
+                        textMovieDescription(movieDate: movie.movieDate, movieGenres: movie.movieGenres, moviesListViewModel: moviesListViewModel)
                     }
                 }
                 Spacer()
@@ -60,12 +60,11 @@ struct textMovieName: View {
 struct textMovieDescription: View {
     var movieDate: String
     var movieGenres : [Int]
+    var moviesListViewModel: moviesScreenViewModel
     var body: some View {
         HStack {
-            Text("\(movieDate)")
-            //ForEach(movieGenres) { genre in
-            //    Text("\(genre.genre)")
-            //}
+            Text(moviesListViewModel.dateDisplay(releaseDate: movieDate))
+            //Text("\()")
             Spacer()
         }
         .font(.system(size: 14, weight: .regular, design: .default))

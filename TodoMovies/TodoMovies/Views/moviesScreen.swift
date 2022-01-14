@@ -16,7 +16,7 @@ struct moviesScreen: View {
         GeometryReader { view in
             ScrollView() {
                 imageMoviesList(image: moviesListViewModel.imageBuilder(imageString: moviesListViewModel.moviesListData.image))
-                    .frame(width: view.size.width, height: view.size.height * 0.45, alignment: .center)
+                    .frame(width: view.size.width, height: view.size.height * 0.47, alignment: .center)
                 HStack {
                     VStack {
                         textNameMoviesList(listName: moviesListViewModel.moviesListData.listName)
@@ -85,8 +85,11 @@ struct textMovieListData: View {
     var body: some View {
         HStack {
             chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLikedList)
-            Text("\(moviesList.numberOfLikes)") + Text("Likes") + Text("   ")
-            Text("\(moviesList.numberOfViews)") + Text(" watched")
+            Text(String(moviesList.numberOfLikes)) + Text(" Likes") + Text("   ")
+            HStack {
+                Image(systemName: "eye")
+                Text("\(moviesList.numberOfViews)") + Text(" views")	
+            }
             Spacer()
         }
         .padding(.vertical,1)
