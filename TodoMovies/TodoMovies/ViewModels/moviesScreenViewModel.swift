@@ -9,40 +9,78 @@ import Foundation
 
 class moviesScreenViewModel: ObservableObject {
     
+    @Published private(set) var moviesListData: moviesList = getMoviesList()
+    @Published private(set) var movies: pageResults = getMovie()
+    
+    private let movieListUrl = "https://api.themoviedb.org/3/movie/2?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
+    private let simlarMoviesUrl = "https://api.themoviedb.org/3/movie/2/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
+    
     static func getMoviesList() -> moviesList {                                             //testMovieList
         moviesList(id: 2,
                    listName: "The very best of Jhonny Depp",
-                   numberOfLikes: "1.2k",
-                   numberOfViews: "3 of 10",
-                   listAuthor: "@TodoMoviesApp",
-                   image: "camera",
-                   movies: [movie(id: 1, movieName: "Edward Scissorhands", movieDate: 1990, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")]),
-                            movie(id: 2, movieName: "Ed Wood", movieDate: 1994, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 3, genre: "Comedy"), movie.genres(id: 2, genre: "Action")]),
-                            movie(id: 3, movieName: "A Nightmare on Elm Street", movieDate: 1984, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 4, genre: "Horror")]),
-                            movie(id: 4, movieName: "Pirates of the Caribbean", movieDate: 2000, movieImagePreview: "camera", movieGenres:
-                                    [movie.genres(id: 1, genre: "Drama"), movie.genres(id: 2, genre: "Action")])]
+                   numberOfLikes: 11111,
+                   numberOfViews: 310,
+                   image: "camera"
     )}
     
-    @Published private(set) var moviesListData: moviesList = getMoviesList()
-    
-    /*
-    func getMovieList(completion:@escaping ([moviesList]) -> ()) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/1/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1") else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            let moviesList = try! JSONDecoder().decode([moviesList].self, from: data!)
-            print(moviesList)
-            
-            //DispatchQueue.main.async {
-            //    completion(moviesList)
-            //}
-        }
-        .resume()
+    static func getMovie() -> pageResults {                                             //testMovieList
+        pageResults(page: 1, results: [movie(id: 2,
+                                             movieName: "The very best of Jhonny Depp",
+                                             movieDate: "111",
+                                             movieImagePreview: "3 of 10",
+                                             movieGenres: [1,2,3]),
+                                       movie(id: 3,
+                                             movieName: "The hihihihi",
+                                             movieDate: "222",
+                                             movieImagePreview: "3 of 10",
+                                             movieGenres: [1,2,3]),
+                                       movie(id: 4,
+                                             movieName: "The oooooooooo",
+                                             movieDate: "333",
+                                             movieImagePreview: "3 of 10",
+                                             movieGenres: [1,2,3])])
     }
-     */
     
+    
+    func getListOfSimilarMovies() {
+        guard let url = URL(string: simlarMoviesUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            do {
+                if let data = data {
+                    let result = try JSONDecoder().decode(pageResults.self, from: data)
+                    print(result)
+                    
+                    DispatchQueue.main.async {
+                        self.movies = result
+                    }
+                } else {
+                    print("No Data")
+                }
+            } catch (let error) {
+                print(error)
+            }
+        }.resume()
+    }
+    
+    func getMovieListData() {
+        guard let url = URL(string: movieListUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            do {
+                if let data = data {
+                    let result = try JSONDecoder().decode(moviesList.self, from: data)
+                    print(result)
+                    
+                    DispatchQueue.main.async {
+                        self.moviesListData = result
+                    }
+                } else {
+                    print("No Data")
+                }
+            } catch (let error) {
+                print(error)
+            }
+        }.resume()
+    }
 }
-

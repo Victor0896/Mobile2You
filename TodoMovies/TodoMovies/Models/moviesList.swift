@@ -7,15 +7,21 @@
 
 import Foundation
 
-struct moviesList: Identifiable {
+struct moviesList: Identifiable, Codable {
     var id: Int
     var listName: String
-    var numberOfLikes: String
-    var numberOfViews: String
-    var listAuthor: String
+    var numberOfLikes: Float
+    var numberOfViews: Int
+    //var listAuthor: String
     var image: String
     
-    private(set) var movies: Array<movie>
+    enum CodingKeys: String, CodingKey {
+        case id
+        case listName = "title"
+        case numberOfLikes = "popularity"
+        case numberOfViews = "vote_count"
+        case image = "backdrop_path"
+    }
 }
 
 

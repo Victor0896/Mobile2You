@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct moviesScreen: View {
+    
     @ObservedObject var moviesListViewModel: moviesScreenViewModel
     @State public var didLikedList = false
     
@@ -29,7 +30,7 @@ struct moviesScreen: View {
                 }
                 .padding()
                 VStack {
-                    ForEach(moviesListViewModel.moviesListData.movies) { movie in
+                    ForEach(moviesListViewModel.movies.results) { movie in
                         movieCell(movie: movie)
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
@@ -42,13 +43,15 @@ struct moviesScreen: View {
                                  mainColor: Color("primaryGrey"),
                                  haveImageBeforeText: false,
                                  didLikedList: $didLikedList)
-                textSubimittedBy(senderName: moviesListViewModel.moviesListData.listAuthor)
+                textSubimittedBy(senderName: "@todoapp")
             }
             .background(Color("primaryBlack"))
             .foregroundColor(Color("primaryGrey"))
-            .onAppear() {
-                //getUserList
-            }
+            
+        }
+        .onAppear() {
+            moviesListViewModel.getMovieListData()
+            moviesListViewModel.getListOfSimilarMovies()
         }
     }
 }
@@ -78,8 +81,8 @@ struct textMovieListData: View {
     var body: some View {
         HStack {
             chageBetweenSymbols(firstSymbol: "suit.heart.fill", secondSymbol: "heart", state: didLikedList)
-            Text(moviesList.numberOfLikes) + Text("Likes") + Text("   ")
-            Text(moviesList.numberOfViews) + Text(" watched")
+            Text("\(moviesList.numberOfLikes)") + Text("Likes") + Text("   ")
+            Text("\(moviesList.numberOfViews)") + Text(" watched")
             Spacer()
         }
         .padding(.vertical,1)

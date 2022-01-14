@@ -53,14 +53,14 @@ struct textMovieName: View {
 }
 
 struct textMovieDescription: View {
-    var movieDate: Int
-    var movieGenres : Array<movie.genres>
+    var movieDate: String
+    var movieGenres : [Int]
     var body: some View {
         HStack {
             Text("\(movieDate)")
-            ForEach(movieGenres) { genre in
-                return Text(genre.genre)
-            }
+            //ForEach(movieGenres) { genre in
+            //    Text("\(genre.genre)")
+            //}
             Spacer()
         }
         .font(.system(size: 14, weight: .regular, design: .default))

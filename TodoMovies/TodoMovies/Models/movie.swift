@@ -7,15 +7,23 @@
 
 import Foundation
 
-struct movie: Identifiable {
+struct pageResults: Codable {
+    var page: Int
+    var results: [movie]
+}
+
+struct movie: Identifiable, Codable {
     var id: Int
     var movieName: String
-    var movieDate: Int
+    var movieDate: String
     var movieImagePreview: String
-    var movieGenres: Array<genres>
+    var movieGenres: [Int]
     
-    struct genres: Identifiable {
-        var id: Int
-        var genre: String
+    enum CodingKeys: String, CodingKey {
+        case id
+        case movieName = "title"
+        case movieDate = "release_date"
+        case movieImagePreview = "poster_path"
+        case movieGenres = "genre_ids"
     }
 }
