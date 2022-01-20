@@ -9,10 +9,10 @@ import Foundation
 
 struct pageResults: Codable {
     var page: Int
-    var results: [movie]
+    var results: [Movie]
 }
 
-struct movie: Identifiable, Codable {
+struct Movie: Identifiable, Codable {
     var id: Int
     var movieName: String
     var movieDate: String

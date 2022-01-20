@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct moviesList: Identifiable, Codable {
+struct MoviesList: Identifiable, Codable {
     var id: Int
     var listName: String
     var numberOfLikes: Double
     var numberOfViews: Int
-    //var listAuthor: String
     var image: String
     
     enum CodingKeys: String, CodingKey {

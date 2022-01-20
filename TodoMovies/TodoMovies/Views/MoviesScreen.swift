@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct moviesScreen: View {
+struct MoviesScreen: View {
     
-    @ObservedObject var moviesListViewModel: moviesScreenViewModel
+    @ObservedObject var moviesListViewModel: MoviesScreenViewModel
     @State public var didLikedList = false
     
     var body: some View {
@@ -31,7 +31,7 @@ struct moviesScreen: View {
                 .padding()
                 VStack {
                     ForEach(moviesListViewModel.movies.results) { movie in
-                        movieCell(moviesListViewModel: moviesListViewModel, movie: movie)
+                        MovieCell(moviesListViewModel: moviesListViewModel, movie: movie)
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
@@ -80,7 +80,7 @@ struct textNameMoviesList: View {
 
 struct textMovieListData: View {
     @Binding var didLikedList: Bool
-    var moviesList: moviesList
+    var moviesList: MoviesList
     
     var body: some View {
         HStack {
@@ -151,9 +151,9 @@ func chageBetweenSymbols(firstSymbol: String, secondSymbol: String, state: Bool)
     return Image(systemName: state ? firstSymbol: secondSymbol)
 }
 
-struct moviesScreen_Previews: PreviewProvider {
+struct MoviesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let screen = moviesScreenViewModel()
-        moviesScreen(moviesListViewModel: screen)
+        let screen = MoviesScreenViewModel()
+        MoviesScreen(moviesListViewModel: screen)
     }
 }

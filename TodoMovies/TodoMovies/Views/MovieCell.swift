@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct movieCell: View {
-    @ObservedObject var moviesListViewModel: moviesScreenViewModel
-    let movie: movie
+struct MovieCell: View {
+    @ObservedObject var moviesListViewModel: MoviesScreenViewModel
+    let movie: Movie
     
     var body: some View {
         GeometryReader { view in
@@ -60,7 +60,7 @@ struct textMovieName: View {
 struct textMovieDescription: View {
     var movieDate: String
     var movieGenres : [Int]
-    var moviesListViewModel: moviesScreenViewModel
+    var moviesListViewModel: MoviesScreenViewModel
     var body: some View {
         HStack {
             Text(moviesListViewModel.dateDisplay(releaseDate: movieDate))

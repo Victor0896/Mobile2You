@@ -7,18 +7,13 @@
 
 import Foundation
 
-class moviesScreenViewModel: ObservableObject {
+class MoviesScreenViewModel: ObservableObject {
     
-    @Published private(set) var moviesListData: moviesList = getMoviesList()
+    @Published private(set) var moviesListData: MoviesList = getMoviesList()
     @Published private(set) var movies: pageResults = getMovie()
     
-    
-    private let movieId = 6
-    private let movieListUrl = "https://api.themoviedb.org/3/movie/6?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
-    private let simlarMoviesUrl = "https://api.themoviedb.org/3/movie/6/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
-    
-    static func getMoviesList() -> moviesList {                                             //testMovieList
-        moviesList(id: 2,
+    static func getMoviesList() -> MoviesList {                                             //testMovieList
+        MoviesList(id: 2,
                    listName: "The very best of Jhonny Depp",
                    numberOfLikes: 11111,
                    numberOfViews: 310,
@@ -26,17 +21,17 @@ class moviesScreenViewModel: ObservableObject {
     )}
     
     static func getMovie() -> pageResults {                                             //testMovieList
-        pageResults(page: 1, results: [movie(id: 2,
+        pageResults(page: 1, results: [Movie(id: 2,
                                              movieName: "The very best of Jhonny Depp",
                                              movieDate: "111",
                                              movieImagePreview: "3 of 10",
                                              movieGenres: [1,2,3]),
-                                       movie(id: 3,
+                                       Movie(id: 3,
                                              movieName: "The hihihihi",
                                              movieDate: "222",
                                              movieImagePreview: "3 of 10",
                                              movieGenres: [1,2,3]),
-                                       movie(id: 4,
+                                       Movie(id: 4,
                                              movieName: "The oooooooooo",
                                              movieDate: "333",
                                              movieImagePreview: "3 of 10",
@@ -76,8 +71,12 @@ class moviesScreenViewModel: ObservableObject {
     
     //MARK: API CALLS
     
+    private let movieId = 6
+    private let movieListUrl = "https://api.themoviedb.org/3/movie/6?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
+    private let similarMoviesUrl = "https://api.themoviedb.org/3/movie/6/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
+    
     func getListOfSimilarMovies() {
-        guard let url = URL(string: simlarMoviesUrl) else { return }
+        guard let url = URL(string: similarMoviesUrl) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
@@ -103,7 +102,7 @@ class moviesScreenViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 if let data = data {
-                    let result = try JSONDecoder().decode(moviesList.self, from: data)
+                    let result = try JSONDecoder().decode(MoviesList.self, from: data)
                     print(result)
                     
                     DispatchQueue.main.async {

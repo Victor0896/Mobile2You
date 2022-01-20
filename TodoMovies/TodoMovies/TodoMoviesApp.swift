@@ -10,9 +10,9 @@ import SwiftUI
 @main
 struct TodoMoviesApp: App {
     var body: some Scene {
-        let viewModel = moviesScreenViewModel()
+        let viewModel = MoviesScreenViewModel()
         WindowGroup {
-            moviesScreen(moviesListViewModel: viewModel)
+            MoviesScreen(moviesListViewModel: viewModel)
         }
     }
 }
