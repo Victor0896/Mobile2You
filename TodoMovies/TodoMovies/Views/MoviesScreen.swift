@@ -31,19 +31,13 @@ struct MoviesScreen: View {
                 .padding()
                 VStack {
                     ForEach(moviesListViewModel.movies.results) { movie in
-                        MovieCell(moviesListViewModel: moviesListViewModel, movie: movie)
+                        MovieCell(moviesList: moviesListViewModel, movie: movie)
                     }
                     .frame(width: view.size.width, height: view.size.height * 0.13)
                 }
-                buttonMoviesList(textsButton: ["Like", "Liked"],
-                                 mainColor: Color("primaryGrey"),
-                                 haveImageBeforeText: true,
-                                 didLikedList: $didLikedList)
-                buttonMoviesList(textsButton: ["Add to My Lists", "Added to My Lists"],
-                                 mainColor: Color("primaryGrey"),
-                                 haveImageBeforeText: false,
-                                 didLikedList: $didLikedList)
-                textSubimittedBy(senderName: "@todoapp")
+                buttonMoviesList(textsButton: ["Like", "Liked"], mainColor: Color("primaryGrey"),haveImageBeforeText: true,didLikedList: $didLikedList)
+                buttonMoviesList(textsButton: ["Add to My Lists", "Added to My Lists"],mainColor: Color("primaryGrey"), haveImageBeforeText: false, didLikedList: $didLikedList)
+                textSubimittedBy(senderName: "Victor")
             }
             .background(Color("primaryBlack"))
             .foregroundColor(Color("primaryGrey"))

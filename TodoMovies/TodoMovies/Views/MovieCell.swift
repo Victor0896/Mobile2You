@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct MovieCell: View {
-    @ObservedObject var moviesListViewModel: MoviesScreenViewModel
-    let movie: Movie
-    
+    var moviesList: MoviesScreenViewModel
+    let movie: MoviesScreenViewModel.movie
+
     var body: some View {
         GeometryReader { view in
             HStack {
                 HStack {
-                    movieImage(image: moviesListViewModel.imageBuilder(imageString: movie.movieImagePreview))
+                    movieImage(image: moviesList.imageBuilder(imageString: movie.movieImagePreview))
                         .frame(width: view.size.width * 0.2, height: view.size.height, alignment: .center)
                         .background(.white)                                                                 //test color
                         .padding(5)
                     VStack {
                         textMovieName(movieName: movie.movieName)
-                        textMovieDescription(movieDate: movie.movieDate, movieGenres: movie.movieGenres, moviesListViewModel: moviesListViewModel)
+                        textMovieDescription(movieDate: movie.movieDate, movieGenres: movie.movieGenres, moviesListViewModel: moviesList)
                     }
                 }
                 Spacer()
@@ -64,7 +64,6 @@ struct textMovieDescription: View {
     var body: some View {
         HStack {
             Text(moviesListViewModel.dateDisplay(releaseDate: movieDate))
-            //Text("\()")
             Spacer()
         }
         .font(.system(size: 14, weight: .regular, design: .default))

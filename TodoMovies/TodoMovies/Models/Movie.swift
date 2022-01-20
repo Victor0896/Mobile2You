@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct pageResults: Codable {
+struct PageResults: Codable {
     var page: Int
     var results: [Movie]
 }

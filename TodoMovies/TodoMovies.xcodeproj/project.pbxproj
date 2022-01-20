@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F4D90B32799039000417624 /* ApiCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4D90B22799039000417624 /* ApiCalls.swift */; };
 		0F91C0E3278CD55000814551 /* TodoMoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91C0E2278CD55000814551 /* TodoMoviesApp.swift */; };
 		0F91C0E7278CD55200814551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F91C0E6278CD55200814551 /* Assets.xcassets */; };
 		0F91C0EA278CD55200814551 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F91C0E9278CD55200814551 /* Preview Assets.xcassets */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F4D90B22799039000417624 /* ApiCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCalls.swift; sourceTree = "<group>"; };
 		0F91C0DF278CD55000814551 /* TodoMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F91C0E2278CD55000814551 /* TodoMoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoMoviesApp.swift; sourceTree = "<group>"; };
 		0F91C0E6278CD55200814551 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			children = (
 				0F91C117278E8E8D00814551 /* MoviesList.swift */,
 				0F91C119278E902400814551 /* Movie.swift */,
-				0F4D90B22799039000417624 /* ApiCalls.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,7 +301,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F4D90B32799039000417624 /* ApiCalls.swift in Sources */,
 				0F91C11A278E902400814551 /* Movie.swift in Sources */,
 				0F91C112278CE57300814551 /* MovieCell.swift in Sources */,
 				0F91C116278E8DC500814551 /* MoviesScreenViewModel.swift in Sources */,

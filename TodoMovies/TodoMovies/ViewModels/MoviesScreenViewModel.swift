@@ -10,42 +10,41 @@ import Foundation
 class MoviesScreenViewModel: ObservableObject {
     
     @Published private(set) var moviesListData: MoviesList = getMoviesList()
-    @Published private(set) var movies: pageResults = getMovie()
+    @Published private(set) var movies: PageResults = getMovie()
     
-    static func getMoviesList() -> MoviesList {                                             //testMovieList
+    typealias movie = Movie
+    
+    static func getMoviesList() -> MoviesList {                                         //testMovieList
         MoviesList(id: 2,
-                   listName: "The very best of Jhonny Depp",
+                   listName: "Star Wars: Episode 5",
                    numberOfLikes: 11111,
                    numberOfViews: 310,
                    image: "camera"
     )}
     
-    static func getMovie() -> pageResults {                                             //testMovieList
-        pageResults(page: 1, results: [Movie(id: 2,
-                                             movieName: "The very best of Jhonny Depp",
-                                             movieDate: "111",
-                                             movieImagePreview: "3 of 10",
+    static func getMovie() -> PageResults {                                             //testMovieList
+        PageResults(page: 1, results: [Movie(id: 2,
+                                             movieName: "Spider-man: No way Home",
+                                             movieDate: "2021",
+                                             movieImagePreview: "300 Views",
                                              movieGenres: [1,2,3]),
                                        Movie(id: 3,
-                                             movieName: "The hihihihi",
-                                             movieDate: "222",
-                                             movieImagePreview: "3 of 10",
+                                             movieName: "The Avengers",
+                                             movieDate: "2012",
+                                             movieImagePreview: "1000 Views",
                                              movieGenres: [1,2,3]),
                                        Movie(id: 4,
-                                             movieName: "The oooooooooo",
-                                             movieDate: "333",
-                                             movieImagePreview: "3 of 10",
+                                             movieName: "The Avengers: Endgame",
+                                             movieDate: "2019",
+                                             movieImagePreview: "123 Views",
                                              movieGenres: [1,2,3])])
     }
     
-    
-    //MARK: Data
-    
+    //MARK: Data Ajustments
     
     func dateDisplay(releaseDate: String) -> String {
         let dateArray = releaseDate.components(separatedBy: "-")
         if !dateArray.isEmpty {
-
             return dateArray[0]
         } else { return ""}
     }
@@ -56,22 +55,12 @@ class MoviesScreenViewModel: ObservableObject {
         return baseUrl + size + imageString
     }
     
-    /*func listGenres(genresList: [Int]) -> String {
-        var stringGenres: [String]
-        genresList.forEach { genre in
-            stringGenres[genre] = genresEnum.genreid(genresList[genre])
-        }
-    }*/
-    
-    
     //MARK: user intent
     
-    
-    
+    //
     
     //MARK: API CALLS
     
-    private let movieId = 6
     private let movieListUrl = "https://api.themoviedb.org/3/movie/6?api_key=efd510fd517de276c43e3a7692af8554&language=en-US"
     private let similarMoviesUrl = "https://api.themoviedb.org/3/movie/6/similar?api_key=efd510fd517de276c43e3a7692af8554&language=en-US&page=1"
     
@@ -81,7 +70,7 @@ class MoviesScreenViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 if let data = data {
-                    let result = try JSONDecoder().decode(pageResults.self, from: data)
+                    let result = try JSONDecoder().decode(PageResults.self, from: data)
                     print(result)
                     
                     DispatchQueue.main.async {
